@@ -69,7 +69,7 @@ with drop:
 
 "Berdasarkan analisis regresi dengan data di atas, diperoleh hasil analisis sebagai berikut:"
 
-st.write(summary3)
+st.write(summary2)
 st.write(" ")
 
 "Diperoleh bahwa gaji tidak berkontribusi signifikan dalam menjelaskan indeks kualitas pendidikan, namun memiliki korelasi positif. Sementara konektivitas internet dan skor PISA sangat menjelaskan besaran indeks pendidikan. Sebanyak 65% keragaman indeks pendidikan ditentukan oleh dua faktor ini, sementara 35% sisanya ditentukan variabel lain yang tidak dimasukkan dalam analisis. Hal ini mengindikasikan bahwa suatu negara dengan kualitas pendidikan tinggi, salah duanya ditentukan oleh kualitas siswa yang tinggi dan dibersamai dengan konektivitas digital yang canggih. Untuk memperbaiki kualitas pendidikan Indonesia, berdasarkan analisis ini, Indonesia perlu fokus pada bagaimana sistem pendidikannya mampu menghasilkan kualitas SDM yang berkualitas dan mampu berpikir kritis, serta memperbaiki infrastruktur digital dan memperluas konektivitas internetnya agar seluruh siswa di Indonesia mampu melihat dunia lebih luas melalui internet."
