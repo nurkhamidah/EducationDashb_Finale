@@ -1,14 +1,6 @@
 from data import *
 import streamlit as st
-import pandas as pd
-import plotly.graph_objects as go
 import plotly.express as px
-import numpy as np
-from sklearn.linear_model import LinearRegression
-import statsmodels.api as sm
-import matplotlib.pyplot as plt
-import seaborn as sns
-
 
 st.set_page_config(
     page_title="Capstone Project Mida",
