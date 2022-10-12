@@ -6,7 +6,6 @@ from sklearn.linear_model import LinearRegression
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 import seaborn as sns
-import requests
 
 ## Define Country
 G20_OECD = ['Argentina', 'Australia', 'Brazil', 'Canada', 'China', 'France', 'Germany', 'India', 'Indonesia', 'Italy', 
