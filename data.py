@@ -1,3 +1,4 @@
+from turtle import bgcolor
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
@@ -15,98 +16,53 @@ G20_OECD = ['Argentina', 'Australia', 'Brazil', 'Canada', 'China', 'France', 'Ge
        'Spain', 'Sweden', 'Switzerland', 'Malaysia', 'Singapore', 'Myanmar', 'Thailand', 'Brunei Darussalam', 'Viet Nam', 'Philippines',
        'Timor Leste', 'Cambodia']
 
+EU = ['AUT', 'BEL', 'BGR','HRV', 'CZE', 'DNK', 'EST', 'FIN', 'FRA', 'DEU', 'GRC', 'HUN', 'IRL', 'ITA', 'LVA', 'LTU', 'LUX', 'MLT', 'NLD', 'POL', 'PRT', 'ROU', 'SVK', 'SVN', 'ESP', 'SWE', 'GBR']
+G20 = ['ARG', 'AUS', 'AUT', 'BEL', 'BGR', 'BRA', 'CAN', 'CHN', 'CZE', 'DNK', 'EST', 'FIN', 'FRA', 'DEU', 'GRC', 'HUN', 'HRV', 'IND', 'IDN', 'ITA', 'IRL', 'ITA', 'LVA', 'LTU', 'JPN', 'KOR', 'LUX', 'MEX', 'MLT', 'NLD', 'POL', 'PRT', 'ROU', 'RUS', 'SAU', 'SVK', 'SVN', 'ESP', 'SWE', 'ZAF', 'TUR', 'GBR', 'USA', 'OED']
+
+OECD =['AUS', 'AUT', 'BEL', 'CAN', 'CHE', 'DEU', 'DNK', 'ESP', 'FIN', 'FRA', 'GBR', 'GRC', 'IRE', 'ISL', 'ITA', 'JPN', 'KOR', 'LUX', 'MEX', 'NLD', 'NOR', 'NZL', 'PRT', 'SWE', 'TUR', 'USA', 'OED']
+ASEAN = ['BRN', 'KHM', 'IDN', 'LAO', 'MYS', 'MMR', 'PHL', 'SGP', 'THA', 'VNM', 'OED']
+
+# DEFINE COLOR
+other = '#8E8D8A'
+point = '#E85A4F'
+bg = '#EAE7DC'
+
 ## PISA 
-pisa_score = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/79countries_rankedpisa.csv", sep=",")
-pisa_score_sum = pisa_score
-pisa_score_sum['sum_all'] = pisa_score_sum['reading']+pisa_score_sum['math']+pisa_score_sum['science']
-pisa_score_sum = pisa_score_sum.sort_values('sum_all', ascending=False)
-pisa_score_use = pisa_score[pisa_score.country_name.isin(G20_OECD)].sort_values('sum_all', ascending=False)
 
-pisa = go.Figure()
-pisa.add_trace(go.Bar(
-    x=pisa_score_use['country_name'],
-    y=pisa_score_use['reading'],
-    name='Reading',
-    orientation='v',
-    marker=dict(
-        color='rgba(246, 78, 139, 0.6)',
-        line=dict(color='rgba(246, 78, 139, 1.0)', width=3)
-    ),
-    customdata=pisa_score_use['rank_reading'],
-    hovertemplate='Country: %{x}<br>'+
-        'Reading Score: %{y}<br>'+
-        'Reading Rank: %{customdata} <br>'+
-        '<extra></extra>',
-))
-pisa.add_trace(go.Bar(
-    x=pisa_score_use['country_name'],
-    y=pisa_score_use['math'],
-    name='Math',
-    orientation='v',
-    marker=dict(
-        color='rgba(58, 71, 80, 0.6)',
-        line=dict(color='rgba(58, 71, 80, 1.0)', width=3)
-    ),
-    customdata=pisa_score_use['rank_math'],
-    hovertemplate='Country: %{x}<br>'+
-        'Math Score: %{y}<br>'+
-        'Math Rank: %{customdata} <br>'+
-        '<extra></extra>',
-))
-pisa.add_trace(go.Bar(
-    x=pisa_score_use['country_name'],
-    y=pisa_score_use['science'],
-    name='Science',
-    orientation='v',
-    marker=dict(
-        color='rgba(187, 38, 8, 0.6)',
-        line=dict(color='rgba(58, 79, 80, 1.0)', width=3)
-    ),
-    customdata=pisa_score_use['rank_science'],
-    hovertemplate='Country: %{x}<br>'+
-        'Science Score: %{y}<br>'+
-        'Science Rank: %{customdata} <br>'+
-        '<extra></extra>',
-))
+pisa_read = pd.read_csv('https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/pisa_read.csv', sep=";")
+pisa_read['color'] = other
+pisa_read['color'][pisa_read['country_id']=='IDN'] = point
 
-pisa.update_layout(barmode='stack')
 
 ## IQ
 
+IQ = pd.read_csv('https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/IQ.csv', sep=";")
+IQ['color'] = other
+IQ['color'][IQ['country_id']=='IDN'] = point
 iq_score = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/199countries_iqscore.csv", sep=",")
 
-iq_score_use = iq_score[iq_score.country.isin(G20_OECD)].sort_values('iq', ascending=False)
-iq_score_use.rename({'Unnamed: 0':'rank'}, axis=1, inplace=True)
 
-iq = go.Figure()
-iq.add_trace(go.Scatter(
-    x=iq_score_use['country'],
-    y=iq_score_use['iq'],
-    mode='markers',
-    customdata=iq_score_use['rank'],
-    hovertemplate='Country: %{x}<br>'+
-    'Score: %{y}<br>'+ 'Rank: %{customdata}<br>'+
-    '<extra></extra>'
-))
+
+# iq = go.Figure()
+# iq.add_trace(go.Scatter(
+#     x=iq_score_use['country_name'],
+#     y=iq_score_use['iq'],
+#     mode='markers',
+#     customdata=iq_score_use['country_id'],
+#     hovertemplate='ID: %{customdata}<br>'+
+#     'Country: %{x}<br>'+
+#     'Score: %{y}<br>'+ 
+#     '<extra></extra>'
+# ))
 
 ## GOV SPENDING
 
 gov_spending192 = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/192countries_govexpend.csv", sep=",")
 gov_spending39 = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/39countries_govspendonedu.csv", sep=",")
 
-gov = go.Figure()
-gov.add_trace(go.Bar(
-    x=gov_spending39['country_name'],
-    y=gov_spending39['gov_expenditure'],
-    orientation='v',
-    marker=dict(
-        color='rgba(187, 138, 68, 0.6)',
-        line=dict(color='rgba(58, 79, 80, 1.0)', width=3)
-    ),
-    hovertemplate='Country: %{x}<br>'+
-        'Expenditure: %{y}'+'%'+'<br>'+
-        '<extra></extra>',
-))
+gov_spending192['color'] = other
+gov_spending192['color'][gov_spending192['country_id']=='IDN'] = point
+
 
 ## SALARY
 
@@ -115,34 +71,78 @@ salary['salary'][salary['country_id'] == 'SWE'] = 37000
 salary_use = salary
 salary_use['ratio'] = salary_use['expenditure_percapita']/salary_use['salary']
 salary_use = salary_use.sort_values('salary', ascending=False)
+salary_top = salary_use.sort_values('salary', ascending=False).head(5)
+salary_low = salary_use.sort_values('salary', ascending=True).head(5)
 
-sal = go.Figure(data=[
+
+sal_top = go.Figure(data=[
     go.Bar(name='Salary (Year) in USD', 
-           x=salary_use['country_name'], 
-           y=salary_use['salary'],
-           hovertemplate='Country: %{x}<br>'+
-           'Salary: %{y}'+'USD'+'<br>'+
+           y=salary_top['country_name'], 
+           x=salary_top['salary'],
+           hovertemplate='Country: %{y}<br>'+
+           'Salary: %{x}'+'USD'+'<br>'+
            '<extra></extra>',
+           orientation='h',
+           marker={'color': '#8E8D8A'},
            ),
     go.Bar(name='Expenditure Percapita', 
-           x=salary_use['country_name'], 
-           y=salary_use['expenditure_percapita'],
-           customdata=salary_use['ratio'].round(2),
-           hovertemplate='Country: %{x}<br>'+
-           'Expenditure Percapita: %{y}'+'USD'+'<br>'+
+           y=salary_top['country_name'], 
+           x=salary_top['expenditure_percapita'],
+           customdata=salary_top['ratio'].round(2),
+           hovertemplate='Country: %{y}<br>'+
+           'Expenditure Percapita: %{x}'+'USD'+'<br>'+
            'Ratio: %{customdata}'+'%'+
            '<extra></extra>',
+           orientation='h',
+           marker={'color': '#E98074'},
            )],
                 )
-# Change the bar mode
-sal.update_layout(barmode='group',
-                  legend=dict(
-                      yanchor='top',
-                      y=0.99,
-                      xanchor='right',
-                      x=0.99
-                  ))
+sal_low = go.Figure(data=[
+    go.Bar(name='Salary (Year) in USD', 
+           y=salary_low['country_name'], 
+           x=salary_low['salary'],
+           hovertemplate='Country: %{y}<br>'+
+           'Salary: %{x}'+'USD'+'<br>'+
+           '<extra></extra>',
+           orientation='h',
+           marker={'color': '#8E8D8A'},
+           ),
+    go.Bar(name='Expenditure Percapita', 
+           y=salary_low['country_name'], 
+           x=salary_low['expenditure_percapita'],
+           customdata=salary_low['ratio'].round(2),
+           hovertemplate='Country: %{y}<br>'+
+           'Expenditure Percapita: %{x}'+'USD'+'<br>'+
+           'Ratio: %{customdata}'+'%'+
+           '<extra></extra>',
+           orientation='h',
+           marker={'color': '#E98074'},
+           )],
+                )
 
+# Change the bar mode
+sal_top.update_layout(barmode='group',
+                      title={
+                        'text': 'Top 5 Salaries and Expenditure Per Capita'
+                        },
+                      yaxis_title="Country",
+                      legend=dict(
+                        yanchor='top',
+                        y=1.2,
+                        xanchor='right',
+                        x=0.99
+                  ))
+sal_low.update_layout(barmode='group',
+                      title={
+                        'text': 'Low 5 Salaries and Expenditure Per Capita'
+                        },
+                      yaxis_title="Country",
+                      legend=dict(
+                        yanchor='top',
+                        y=1.2,
+                        xanchor='right',
+                        x=0.99
+                  ))
 ## ALL
 
 all_data = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/39countries_alldata.csv", sep=",")

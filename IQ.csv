@@ -1,0 +1,200 @@
+﻿country_id;country_name;iq;rank
+JPN;Japan;106.48;1
+TWN;Taiwan;106.47;2
+SGP;Singapore;105.89;3
+HKG;Hong Kong;105.37;4
+CHN;China;104.1;5
+KOR;South Korea;102.35;6
+BLR;Belarus;101.6;7
+FIN;Finland;101.2;8
+LIE;Liechtenstein;101.07;9
+DEU;Germany;100.74;10
+NLD;Netherlands;100.74;11
+EST;Estonia;100.72;12
+LUX;Luxembourg;99.87;13
+MAC;Macau;99.82;14
+KHM;Cambodia;99.75;15
+CAN;Canada;99.52;16
+AUS;Australia;99.24;17
+HUN;Hungary;99.24;18
+CHE;Switzerland;99.24;19
+GBR;United Kingdom;99.12;20
+GRL;Greenland;98.89;21
+PRK;North Korea;98.82;22
+SVN;Slovenia;98.6;23
+NZL;New Zealand;98.57;24
+AUT;Austria;98.38;25
+ISL;Iceland;98.26;26
+DNK;Denmark;97.83;27
+BEL;Belgium;97.49;28
+USA;United States;97.43;29
+NOR;Norway;97.13;30
+SWE;Sweden;97;31
+FRA;France;96.69;32
+POL;Poland;96.35;33
+SVK;Slovakia;96.32;34
+RUS;Russia;96.29;35
+LTU;Lithuania;95.89;36
+HRV;Croatia;95.75;37
+AND;Andorra;95.2;38
+IRL;Ireland;95.13;39
+CZE;Czech Republic;94.92;40
+LVA;Latvia;94.79;41
+ITA;Italy;94.23;42
+NCL;New Caledonia;93.92;43
+VUT;Vanuatu;93.92;44
+ESP;Spain;93.9;45
+BMU;Bermuda;93.48;46
+CYP;Cyprus;93.39;47
+PRT;Portugal;92.77;48
+ISR;Israel;92.43;49
+BRB;Barbados;91.6;50
+MLT;Malta;91.27;51
+MMR;Myanmar;91.18;52
+MNG;Mongolia;91.03;53
+BGR;Bulgaria;90.99;54
+DRC;Greece;90.77;55
+SUR;Suriname;90.29;56
+UKR;Ukraine;90.07;57
+MDA;Moldova;89.98;58
+SRB;Serbia;89.6;59
+VNM;Vietnam;89.53;60
+IRQ;Iraq;89.28;61
+UZB;Uzbekistan;89.01;62
+KAZ;Kazakhstan;88.89;63
+THA;Thailand;88.87;64
+ARM;Armenia;88.82;65
+BIH;Bosnia and Herzegovina;88.54;66
+CRI;Costa Rica;88.34;67
+BTN;Bhutan;87.94;68
+CHL;Chile;87.89;69
+MEX;Mexico;87.73;70
+TJK;Tajikistan;87.71;71
+URY;Uruguay;87.59;72
+BRN;Brunei;87.58;73
+MYS;Malaysia;87.58;74
+BHS;Bahamas;86.99;75
+ROU;Romania;86.88;76
+TUR;Turkey;86.8;77
+ARG;Argentina;86.63;78
+LKA;Sri Lanka;86.62;79
+MUS;Mauritius;86.56;80
+TKM;Turkmenistan;85.86;81
+MNE;Montenegro;85.78;82
+TTO;Trinidad and Tobago;85.63;83
+AZE;Azerbaijan;84.81;84
+GEO;Georgia;84.5;85
+TCA;Turks and Caicos Islands;84.29;86
+PRY;Paraguay;84.04;87
+COK;Cook Islands;83.96;88
+FJI;Fiji;83.96;89
+KIR;Kiribati;83.96;90
+MHL;Marshall Islands;83.96;91
+FSM;Micronesia;83.96;92
+WSM;Samoa;83.96;93
+SLB;Solomon Islands;83.96;94
+TON;Tonga;83.96;95
+CUB;Cuba;83.9;96
+BHR;Bahrain;83.6;97
+BRA;Brazil;83.38;98
+GUY;Guyana;83.23;99
+COL;Colombia;83.13;100
+VEN;Venezuela;82.99;101
+CYM;Cayman Islands;82.24;102
+AFG;Afghanistan;82.12;103
+HTI;Haiti;82.1;104
+DOM;Dominican Republic;82.05;105
+ARE;United Arab Emirates;82.05;106
+PRI;Puerto Rico;81.99;107
+MKD;North Macedonia;81.91;108
+ALB;Albania;81.75;109
+LBN;Lebanon;81.7;110
+PHL;Philippines;81.64;111
+PER;Peru;81.44;112
+MNP;Northern Mariana Islands;81.36;113
+LAO;Laos;80.99;114
+LBY;Libya;80.92;115
+QAT;Qatar;80.78;116
+JOR;Jordan;80.7;117
+MDV;Maldives;80.54;118
+IRN;Iran;80.01;119
+PAK;Pakistan;80;120
+GRD;Grenada;79.34;121
+TUN;Tunisia;79.22;122
+KGZ;Kyrgyzstan;79.09;123
+PAN;Panama;79;124
+TCD;Chad;78.87;125
+SDN;Sudan;78.87;126
+SYC;Seychelles;78.76;127
+OMN;Oman;78.7;128
+KWT;Kuwait;78.64;129
+IDN;Indonesia;78.49;130
+PNG;Papua New Guinea;78.49;131
+TLS;Timor-Leste;78.49;132
+ECU;Ecuador;78.26;133
+PSE;Palestine;77.69;134
+SEN;Senegal;77.37;135
+COM;Comoros;77.07;136
+MDG;Madagascar;76.79;137
+IOT;British Virgin Islands;76.69;138
+BOL;Bolivia;76.53;139
+UGA;Uganda;76.42;140
+SAU;Saudi Arabia;76.36;141
+EGY;Egypt;76.32;142
+IND;India;76.24;143
+DZA;Algeria;76;144
+KEN;Kenya;75.2;145
+AGO;Angola;75.1;146
+JAM;Jamaica;75.08;147
+TZA;Tanzania;74.95;148
+SYR;Syria;74.41;149
+BGD;Bangladesh;74.33;150
+ZWE;Zimbabwe;74.01;151
+BFA;Burkina Faso;73.8;152
+LCA;Saint Lucia;73.68;153
+MOZ;Mozambique;72.5;154
+BDI;Burundi;72.09;155
+NER;Niger;70.82;156
+ATG;Antigua and Barbuda;70.48;157
+KNA;Saint Kitts and Nevis;70.48;158
+RWA;Rwanda;69.95;159
+BEN;Benin;69.71;160
+MWI;Malawi;69.7;161
+SLV;El Salvador;69.63;162
+BWA;Botswana;69.45;163
+SWZ;Eswatini;68.87;164
+LSO;Lesotho;68.87;165
+ZAF;South Africa;68.87;166
+ERI;Eritrea;68.77;167
+ZMB;Zambia;68.43;168
+ETH;Ethiopia;68.42;169
+DJI;Djibouti;68.41;170
+CMR;Cameroon;67.76;171
+NGA;Nigeria;67.76;172
+SOM;Somalia;67.67;173
+MAR;Morocco;67.03;174
+NAM;Namibia;66.19;175
+DMA;Dominica;66.03;176
+STP;Sao Tome and Principe;65.22;177
+COG;DR Congo;64.92;178
+VCT;Saint Vincent and the Grenadines;63.42;179
+GAB;Gabon;62.97;180
+COG;Republic of the Congo;62.97;181
+YEM;Yemen;62.86;182
+BLZ;Belize;62.55;183
+CAF;Central African Republic;62.55;184
+HND;Honduras;62.16;185
+TGO;Togo;59.83;186
+MLI;Mali;59.76;187
+MRT;Mauritania;59.76;188
+SSD;South Sudan;58.61;189
+DHA;Ghana;58.16;190
+CIV;Ivory Coast;58.16;191
+GIN;Guinea;53.48;192
+NIC;Nicaragua;52.69;193
+GMB;Gambia;52.68;194
+CPV;Cape Verde;52.5;195
+GTM;Guatemala;47.72;196
+LBR;Liberia;45.07;197
+SLE;Sierra Leone;45.07;198
+NPL;Nepal;42.99;199
