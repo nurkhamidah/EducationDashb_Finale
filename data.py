@@ -52,7 +52,7 @@ gov_spending192['color'][gov_spending192['country_id']=='IDN'] = point
 
 ## SALARY
 
-salary = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/39countries_salary.csv")
+salary = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/39countries_salary.csv", sep=",")
 all_data = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/39countries_alldata.csv", sep=",")
 
 all_data['salary'][all_data['country_id'] == 'SWE'] = 37000
