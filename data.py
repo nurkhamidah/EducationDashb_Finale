@@ -41,19 +41,6 @@ IQ['color'][IQ['country_id']=='IDN'] = point
 iq_score = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/199countries_iqscore.csv", sep=",")
 
 
-
-# iq = go.Figure()
-# iq.add_trace(go.Scatter(
-#     x=iq_score_use['country_name'],
-#     y=iq_score_use['iq'],
-#     mode='markers',
-#     customdata=iq_score_use['country_id'],
-#     hovertemplate='ID: %{customdata}<br>'+
-#     'Country: %{x}<br>'+
-#     'Score: %{y}<br>'+ 
-#     '<extra></extra>'
-# ))
-
 ## GOV SPENDING
 
 gov_spending192 = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/192countries_govexpend.csv", sep=",")
@@ -66,63 +53,43 @@ gov_spending192['color'][gov_spending192['country_id']=='IDN'] = point
 ## SALARY
 
 salary = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/39countries_salary.csv")
-salary['salary'][salary['country_id'] == 'SWE'] = 37000
-salary_use = salary
-salary_use['ratio'] = salary_use['expenditure_percapita']/salary_use['salary']
+all_data = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/39countries_alldata.csv", sep=",")
+
+all_data['salary'][all_data['country_id'] == 'SWE'] = 37000
+salary_use = all_data
 salary_use = salary_use.sort_values('salary', ascending=False)
-salary_top = salary_use.sort_values('salary', ascending=False).head(5)
+salary_top = salary_use.sort_values('salary', ascending=True).tail(5)
 salary_low = salary_use.sort_values('salary', ascending=True).head(5)
 
-
-sal_top = go.Figure(data=[
-    go.Bar(name='Salary (Year) in USD', 
-           y=salary_top['country_name'], 
-           x=salary_top['salary'],
-           hovertemplate='Country: %{y}<br>'+
-           'Salary: %{x}'+'USD'+'<br>'+
-           '<extra></extra>',
-           orientation='h',
-           marker={'color': '#8E8D8A'},
-           ),
-    go.Bar(name='Expenditure Percapita', 
-           y=salary_top['country_name'], 
-           x=salary_top['expenditure_percapita'],
-           customdata=salary_top['ratio'].round(2),
-           hovertemplate='Country: %{y}<br>'+
-           'Expenditure Percapita: %{x}'+'USD'+'<br>'+
-           'Ratio: %{customdata}'+'%'+
-           '<extra></extra>',
-           orientation='h',
-           marker={'color': '#E98074'},
-           )],
-                )
-sal_low = go.Figure(data=[
-    go.Bar(name='Salary (Year) in USD', 
-           y=salary_low['country_name'], 
-           x=salary_low['salary'],
-           hovertemplate='Country: %{y}<br>'+
-           'Salary: %{x}'+'USD'+'<br>'+
-           '<extra></extra>',
-           orientation='h',
-           marker={'color': '#8E8D8A'},
-           ),
-    go.Bar(name='Expenditure Percapita', 
-           y=salary_low['country_name'], 
-           x=salary_low['expenditure_percapita'],
-           customdata=salary_low['ratio'].round(2),
-           hovertemplate='Country: %{y}<br>'+
-           'Expenditure Percapita: %{x}'+'USD'+'<br>'+
-           'Ratio: %{customdata}'+'%'+
-           '<extra></extra>',
-           orientation='h',
-           marker={'color': '#E98074'},
-           )],
-                )
+salidx_top = px.bar(salary_top, 
+                    y='country_name', 
+                    x='salary', 
+                    orientation='h',
+                    color='country_index',
+                    range_color=[0.5,1],
+                    width=500)
+salidx_low = px.bar(salary_low, 
+                    y='country_name', 
+                    x='salary', 
+                    orientation='h',
+                    color='country_index',
+                    range_color=[0.5,1],
+                    width=500)
+salidx_low.update_traces(customdata=salary_low['country_index'],
+                         hovertemplate='Country: %{y}<br>'+
+                                        'Teacher Salary: %{x}'+'USD'+'<br>'+
+                                        'Index: %{customdata}'+'%'+
+                                        '<extra></extra>')
+salidx_top.update_traces(customdata=salary_top['country_index'],
+                         hovertemplate='Country: %{y}<br>'+
+                                        'Teacher Salary: %{x}'+'USD'+'<br>'+
+                                        'Index: %{customdata}'+'%'+
+                                        '<extra></extra>')
 
 # Change the bar mode
-sal_top.update_layout(barmode='group',
+salidx_top.update_layout(barmode='group',
                       title={
-                        'text': 'Top 5 Salaries and Expenditure Per Capita'
+                        'text': '5 NEGARA PENDAPATAN TERTINGGI DI DUNIA (USD/Year)'
                         },
                       yaxis_title="Country",
                       legend=dict(
@@ -131,9 +98,9 @@ sal_top.update_layout(barmode='group',
                         xanchor='right',
                         x=0.99
                   ))
-sal_low.update_layout(barmode='group',
+salidx_low.update_layout(barmode='group',
                       title={
-                        'text': 'Low 5 Salaries and Expenditure Per Capita'
+                        'text': '5 NEGARA PENDAPATAN TERENDAH DI DUNIA (USD/Year)'
                         },
                       yaxis_title="Country",
                       legend=dict(
@@ -142,24 +109,43 @@ sal_low.update_layout(barmode='group',
                         xanchor='right',
                         x=0.99
                   ))
-## ALL
-
-all_data = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/39countries_alldata.csv", sep=",")
 
 ## REG
 
-cor = px.imshow(all_data.corr('pearson'))
 all_data['ratio'] = all_data['expenditure_percapita']/all_data['salary']
 y = all_data['country_index']
-X = all_data[['salary', 'net_user','reading_mean', 'math_mean', 'science_mean']]
+X = all_data[['salary', 'net_user','reading_mean']]
 
-X2 = sm.add_constant(X)
-res = sm.OLS(y, X2).fit()
-summary = res.summary()
+data = all_data[['country_id', 'country_name', 'net_user', 'salary', 'reading_mean', 'country_index']]
+data2 = data[['net_user', 'salary', 'reading_mean', 'country_index']]
+
+corr = data2.corr()
+
+cor = go.Figure()
+cor.add_trace(go.Heatmap(z=corr.values,
+                         x=corr.index.values,
+                         y=corr.columns.values,
+                         colorscale='rdbu',
+                         zmin=-1, zmax=1,
+                         text=corr.values.astype(str),
+                         texttemplate="%{text:.2f}",
+                         textfont={"size":16},
+                         hovertemplate='X: %{x}<br>'+'Y: %{y}<br>'+
+                         "Correlation: %{text:.2f}<br>"+'<extra></extra>'))
+
+cor.update_layout(height=600,
+                  width=600,
+                  title={
+                      'text': 'KORELASI ANTAR VARIABEL'
+                  })
 
 model = LinearRegression()
 model.fit(X, y)
 model_r2 = model.score(X, y)
+
+X2 = sm.add_constant(X)
+models = sm.OLS(y,X2)
+summary = models.fit().summary()
 
 ## ASSUMPTIONS
 
@@ -345,57 +331,3 @@ normality = normal_errors_assumption(model, X, y)
 multicollinearity = multicollinearity_assumption(model, X, y)
 autocorrelation = autocorrelation_assumption(model, X, y)
 homoscedascity = homoscedasticity_assumption(model, X, y)
-    
-## FIX MULT
-
-X['pisa'] = (X['math_mean']+X['reading_mean']+X['science_mean'])/3
-X_new = X[['salary', 'pisa', 'net_user']]
-
-model_2 = LinearRegression()
-model_2.fit(X_new, y)
-model2_r2 = model_2.score(X_new, y)
-
-multicollinearity2 = multicollinearity_assumption(model_2, X_new, y)
-linearity2 = linear_assumption(model_2, X_new, y)
-
-X2_new = sm.add_constant(X_new)
-res2 = sm.OLS(y, X2_new).fit()
-summary2 = res2.summary()
-
-x = X_new['salary']
-y2 = X_new['pisa']
-x2 = sm.add_constant(x)
-res3 = sm.OLS(y2, x2).fit()
-summary3 = res3.summary()
-
-## EDU GAP
-
-# edu_gap = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/34provinces_edugap.csv", sep=",")
-# edu_gap['prov_name'].replace('D.K.I. Jakarta', 'Jakarta Raya', inplace=True)
-# edu_gap['prov_name'].replace('D.I. Yogyakarta', 'Yogyakarta', inplace=True)
-# edu_gap['prov_name'].replace('Kepulauan Bangka Belitung', 'Bangka Belitung', inplace=True)
-# edu_gap['ratio'] = edu_gap['rata_lama_sekolah']/edu_gap['angka_hls']
-
-
-# geojson2 = requests.get(
-#     "https://raw.githubusercontent.com/bimaputra1/School_Partitipation_Rates_with_GeoPandas/master/gadm36_IDN_1.json"
-# ).json()
-
-
-# # dataframe with columns referenced in question
-# df = pd.DataFrame(
-#     {"Column": pd.json_normalize(geojson2["features"])["properties.NAME_1"]}
-# ).assign(Columnnext=lambda d: d["Column"].str.len())
-
-# fig8 = go.Figure(
-#     data=go.Choropleth(
-#         geojson=geojson2,
-#         locations=df["Column"],  # Spatial coordinates
-#         featureidkey="properties.NAME_1",
-#         z=edu_gap["ratio"],  # Data to be color-coded
-#         colorscale="Reds",
-#         colorbar_title="Ratio",
-#     )
-# )
-# fig8.update_geos(fitbounds="locations", visible=False)
-
