@@ -46,7 +46,7 @@ with m4:
 st.caption('Source: [Hiroshima for Peace](https://hiroshimaforpeace.com/en/fukkoheiwakenkyu/vol1/1-52)', unsafe_allow_html=True)
 " "
 
-st.markdown('<h4 style="text-align: justify">Lalu, bagaimana dengan anak-anak Jepang saat ini?</h4>', unsafe_allow_html=True)
+st.markdown('<h5 style="text-align: justify">Lalu, bagaimana dengan anak-anak Jepang saat ini?</h5>', unsafe_allow_html=True)
 
 st.markdown('<div style="text-align: justify"><i>Ulster Institute</i> pada tahun 2019 melalui artikelnya yang berjudul <b><i>The Intelligence of Nations</i></b> meneliti mengenai skor rata-rata IQ dari 199 negara di dunia. Selaras dengan pemaparan sebelumnya, bahwa negara yang menduduki peringkat pertama adalah Jepang dengan skor rata-rata IQ sebesar 106.48.</div>', unsafe_allow_html=True)
 " " 
@@ -227,7 +227,7 @@ c5.markdown('<div style="text-align: center"><b>Sistem pendidikan yang tidak men
 st.markdown('<div style="text-align:justify">Dalam tulisan ini, disoroti mengenai pemaparan Pisani terutama pada kesejahteraan guru yang masih harus menjadi perhatian serius bagi pemerintah. Data menunjukkan bahwa kesejahteraan guru di Indonesia masih rendah, dengan rata-rata gaji yang terbilang lebih kecil daripada gaji guru di negara lain di dunia.</div>', unsafe_allow_html=True)
 " "
     
-with st.expander('Hasil Analisis Regresi', expanded=True):
+with st.expander('', expanded=True):
     g1, g2, g3 = st.columns([1,1,1])
     with g1:
         st.metric("Jumlah Guru Honorer di Indonesia", '48%*', delta=None)
