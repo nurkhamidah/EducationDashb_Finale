@@ -18,7 +18,7 @@ st.markdown(f"""
 st.markdown('<h1 style="text-align:center"><b>Kualitas Pendidikan Rendah, Bagaimana Indonesia Mengatasinya?</b></h1>', unsafe_allow_html=True)
 st.caption('<div style="text-align:center">Nur Khamidah</div>', unsafe_allow_html=True)
 " "
-st.caption('<div style="text-align:justify">Meneliti seberapa jauh perjalanan kualitas pendidikan Indonesia berdasarkan beberapa indikator, dan sejauh mana ketertinggalan Indonesia dibandingkan negara lain.</div>', unsafe_allow_html=True)
+st.caption('<div style="text-align:center">Meneliti seberapa jauh perjalanan kualitas pendidikan Indonesia berdasarkan beberapa indikator, dan sejauh mana ketertinggalan Indonesia dibandingkan negara lain.</div>', unsafe_allow_html=True)
 
 " "
 i1, i2, i3 = st.columns([1,3,1])
@@ -290,11 +290,11 @@ st.caption('''*) Pada level signifikansi 5%.
 
 st.markdown('<div style="text-align:justify">Diperoleh bahwa gaji tidak berkontribusi signifikan dalam menjelaskan indeks kualitas pendidikan, namun memiliki korelasi positif. Sementara konektivitas internet dan skor PISA sangat menjelaskan besaran indeks pendidikan.</div>', unsafe_allow_html=True)
 " "
-st.markdown('<h5 style="text-align:justify">Apa insight dan rekomendasi berdasarkan paparan sebelumnya?</h5>', unsafe_allow_html=True)
+st.markdown('<h5 style="text-align:justify">Apa <i>insight</i> dan rekomendasi berdasarkan paparan sebelumnya?</h5>', unsafe_allow_html=True)
 
 st.markdown('<div style="text-align:justify">Diperoleh bahwa gaji tidak berkontribusi signifikan dalam menjelaskan indeks kualitas pendidikan, namun memiliki korelasi positif. Sementara konektivitas internet dan skor PISA sangat menjelaskan besaran indeks pendidikan. Hal ini mengindikasikan bahwa suatu negara dengan kualitas pendidikan tinggi, salah duanya ditentukan oleh kualitas siswa yang tinggi dan dibersamai dengan konektivitas digital yang canggih.</div>', unsafe_allow_html=True)
 
 st.markdown('<div style="text-align:justify">Untuk memperbaiki kualitas pendidikan Indonesia, berdasarkan analisis ini, Indonesia perlu fokus pada bagaimana sistem pendidikannya mampu menghasilkan kualitas SDM yang berkualitas dan mampu berpikir kritis, serta memperbaiki infrastruktur digital dan memperluas konektivitas internetnya agar seluruh siswa di Indonesia mampu melihat dunia lebih luas melalui internet.</div>', unsafe_allow_html=True)
 
-st.markdown('<div style="text-align:justify">Walaupun gaji guru tidak berpengaruh langsung secara signifikan, tetapi melihat korelasinya yang cukup besar (>50%) dengan indeks kualitas pendidikan, menunjukkan bahwa secara tidak langsun variabel ini berpengaruh. Diperlukan perhatian khusus dari pemerintah terhadap kesejahteraan guru yang secara tidak langsung akan berpengaruh pada perbaikan kualitas pendidikan Indonesia di masa depan.</div>', unsafe_allow_html=True)
+st.markdown('<div style="text-align:justify">Walaupun gaji guru tidak berpengaruh langsung secara signifikan, tetapi melihat korelasinya yang cukup besar (>50%) dengan indeks kualitas pendidikan, menunjukkan bahwa secara tidak langsung variabel ini berpengaruh. Diperlukan perhatian khusus dari pemerintah terhadap kesejahteraan guru yang secara tidak langsung akan berpengaruh pada perbaikan kualitas pendidikan Indonesia di masa depan.</div>', unsafe_allow_html=True)
 
