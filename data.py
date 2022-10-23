@@ -6,6 +6,7 @@ from sklearn.linear_model import LinearRegression
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 import seaborn as sns
+import requests
 
 ## Define Country
 G20_OECD = ['Argentina', 'Australia', 'Brazil', 'Canada', 'China', 'France', 'Germany', 'India', 'Indonesia', 'Italy', 
@@ -331,3 +332,22 @@ normality = normal_errors_assumption(model, X, y)
 multicollinearity = multicollinearity_assumption(model, X, y)
 autocorrelation = autocorrelation_assumption(model, X, y)
 homoscedascity = homoscedasticity_assumption(model, X, y)
+
+## Plot Indonesia
+
+geojson = requests.get(
+    #"https://raw.githubusercontent.com/superpikar/indonesia-geojson/master/indonesia-province-simple.json"
+    #"https://raw.githubusercontent.com/ans-4175/peta-indonesia-geojson/master/indonesia-prov.geojson"
+    #"https://raw.githubusercontent.com/Vizzuality/growasia_calculator/master/public/indonesia.geojson"
+    "https://raw.githubusercontent.com/superpikar/indonesia-geojson/master/indonesia.geojson"
+).json()
+
+
+indo = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/indonesia.csv", sep=";")
+
+# dataframe with columns referenced in question
+df = pd.DataFrame(
+    {"Column": pd.json_normalize(geojson["features"])["properties.state"]}
+).assign(Columnnext=lambda d: d["Column"].str.len())
+
+df

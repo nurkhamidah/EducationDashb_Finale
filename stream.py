@@ -290,6 +290,44 @@ st.caption('''*) Pada level signifikansi 5%.
 
 st.markdown('<div style="text-align:justify">Diperoleh bahwa gaji tidak berkontribusi signifikan dalam menjelaskan indeks kualitas pendidikan, namun memiliki korelasi positif. Sementara konektivitas internet dan skor PISA sangat menjelaskan besaran indeks pendidikan.</div>', unsafe_allow_html=True)
 " "
+    
+st.markdown('<h5 style="text-align:justify">Permasalahan utama dalam pembangunan pendidikan di Indonesia</h5>', unsafe_allow_html=True)
+
+j1, j2, j3 = st.columns([1,2,1])
+with j2:
+    st.markdown('<div style="text-align:justify"><b>PETA INDONESIA BERDASARKAN KATEGORI TERTENTU</b></div>', unsafe_allow_html=True)
+
+vars4 = ["Jml Sekolah per 10km2", "Jml Siswa per 10km2", "Jml Guru per 10km2", "Rata Lama Sekolah", "Angka Melek Huruf", "Siswa per Guru", "Siswa per Sekolah",	"Guru per Sekolah",	"Angka Partisipasi Sekolah",	"Jumlah Universitas",	"Jumlah Dosen",	"Jumlah Mahasiswa"]
+p1, p2, p3 = st.columns([1,3,1])
+with p2:
+    var4 = st.selectbox("Pilih Indikator:", vars4)
+    
+    fig8 = go.Figure(
+        data=go.Choropleth(
+            geojson=geojson,
+            locations=df["Column"], 
+            featureidkey="properties.state",
+            z=indo[var4], 
+            colorscale="Reds",
+            colorbar_title="Column",
+        )
+    )
+    fig8.update_layout(autosize=False,
+                        margin = dict(
+                                l=0,
+                                r=0,
+                                b=0,
+                                t=0,
+                                pad=4,
+                                autoexpand=True
+                            ),
+                            width=800,
+                            )
+    fig8.update_geos(fitbounds="locations", visible=False)
+    
+    
+    st.plotly_chart(fig8)
+
 st.markdown('<h5 style="text-align:justify">Apa <i>insight</i> dan rekomendasi berdasarkan paparan sebelumnya?</h5>', unsafe_allow_html=True)
 
 st.markdown('<div style="text-align:justify">Diperoleh bahwa gaji tidak berkontribusi signifikan dalam menjelaskan indeks kualitas pendidikan, namun memiliki korelasi positif. Sementara konektivitas internet dan skor PISA sangat menjelaskan besaran indeks pendidikan. Hal ini mengindikasikan bahwa suatu negara dengan kualitas pendidikan tinggi, salah duanya ditentukan oleh kualitas siswa yang tinggi dan dibersamai dengan konektivitas digital yang canggih.</div>', unsafe_allow_html=True)
