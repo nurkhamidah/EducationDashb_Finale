@@ -343,11 +343,11 @@ geojson = requests.get(
 ).json()
 
 
-indo = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/Education_Dashboard/master/indonesia.csv", sep=";")
+indo = pd.read_csv("https://raw.githubusercontent.com/nurkhamidah/EducationDashb_Finale/master/indonesia.csv", sep=";")
 
 # dataframe with columns referenced in question
 df = pd.DataFrame(
     {"Column": pd.json_normalize(geojson["features"])["properties.state"]}
 ).assign(Columnnext=lambda d: d["Column"].str.len())
 
-df
+indo.iloc[:,12:16].describe()
