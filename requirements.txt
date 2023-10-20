@@ -1,7 +1,8 @@
 plotly
 pandas
-sklearn
+scikit-learn
 statsmodels
 matplotlib
 seaborn
 requests
+sklearn
